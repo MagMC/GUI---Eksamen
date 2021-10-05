@@ -5,6 +5,27 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="350" Width="525">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+
+        <ListView
+            ItemsSource="{Binding Debtors}"
+            SelectedItem="{Binding SelectedDebtor}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Debt" Width="120" DisplayMemberBinding="{Binding TotalDebt}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Grid.Row="1" Width="80" Height="40"
+            Command="{Binding CommandLoad}"
+            Content="LOAD" />
     </Grid>
 </Window>
