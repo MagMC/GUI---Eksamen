@@ -22,6 +22,7 @@ namespace ex1_the_debt_book.Test.Unit
         public void VerifyConstruction()
         {
             Assert.AreEqual(_debtorId, _viewModel.Debtor.Id);
+            Assert.AreEqual("Chip", _viewModel.Debtor.Name);
         }
     }
 }

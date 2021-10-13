@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using ex1_the_debt_book.Models;
 using Prism.Mvvm;
 
