@@ -9,7 +9,7 @@ namespace ex1_the_debt_book.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private Services.IDebtorStore _debtorStore = null;
+        private readonly Services.IDebtorStore _debtorStore;
 
         public MainWindowViewModel(Services.IDebtorStore debtorStore)
         {
@@ -17,19 +17,19 @@ namespace ex1_the_debt_book.ViewModels
         }
 
 
-        public ObservableCollection<Debtor> Debtors { get; private set; } = new ObservableCollection<Debtor>();
+        public ObservableCollection<Debtor> Debtors { get; } = new ObservableCollection<Debtor>();
 
 
-        private Debtor _selectedDebtor = null;
+        private Debtor _selectedDebtor;
 
         public Debtor SelectedDebtor
         {
             get => _selectedDebtor;
             set
             {
-                if (SetProperty<Debtor>(ref _selectedDebtor, value))
+                if (SetProperty(ref _selectedDebtor, value))
                 {
-                    Debug.WriteLine(_selectedDebtor?.Name ?? "no customer selected");
+                    Debug.WriteLine(_selectedDebtor?.Name ?? "no debtor selected");
                 }
             }
         }
@@ -47,18 +47,29 @@ namespace ex1_the_debt_book.ViewModels
             // TODO: Open dialog
         }
 
-        private void AddDebtor()
+        private void CommandAddDebtExecute()
         {
-            
+            // TODO: Open dialog
         }
-        
-        private DelegateCommand _commandLoad = null;
-        private DelegateCommand _commandAddDebtor = null;
+
+        public int AddDebtor(string name)
+        {
+            int id = _debtorStore.AddDebtor(name);
+            CommandLoadExecute();
+            return id;
+        }
+
+        private DelegateCommand _commandLoad;
+        private DelegateCommand _commandAddDebtor;
+        private DelegateCommand _commandAddDebt;
 
         public DelegateCommand CommandLoad =>
             _commandLoad ?? (_commandLoad = new DelegateCommand(CommandLoadExecute));
-        
+
         public DelegateCommand CommandAddDebtor =>
             _commandAddDebtor ?? (_commandAddDebtor = new DelegateCommand(CommandAddDebtorExecute));
+
+        public DelegateCommand CommandAddDebt =>
+            _commandAddDebt ?? (_commandAddDebt = new DelegateCommand(CommandAddDebtExecute));
     }
 }

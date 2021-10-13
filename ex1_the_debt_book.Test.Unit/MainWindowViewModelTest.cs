@@ -1,3 +1,4 @@
+using System.Linq;
 using ex1_the_debt_book.Models;
 using ex1_the_debt_book.Services;
 using ex1_the_debt_book.ViewModels;
@@ -7,36 +8,47 @@ namespace ex1_the_debt_book.Test.Unit
 {
     public class MainWindowViewModelTest
     {
-        private IDebtorStore _debtorStore = new DbDebtorStore();
+        private IDebtorStore _debtorStore;
         private MainWindowViewModel _viewModel;
-
-        public MainWindowViewModelTest()
-        {
-            _viewModel = new MainWindowViewModel(_debtorStore);
-        }
 
         [SetUp]
         public void Setup()
         {
+            _debtorStore = new DbDebtorStore();
+            _viewModel = new MainWindowViewModel(_debtorStore);
         }
 
         [Test]
         public void LoadDataFromStore()
         {
             _debtorStore.AddDebtor("Anders And"); // Add debtor to store
-            Assert.AreEqual(_viewModel.Debtors.Count, 0);
+            Assert.AreEqual(0, _viewModel.Debtors.Count);
             _viewModel.CommandLoad.Execute(); // Read store into view model
-            Assert.AreEqual(_viewModel.Debtors.Count, 1);
+            Assert.AreEqual(1, _viewModel.Debtors.Count);
         }
 
         [Test]
-        public void WriteDataToStore()
+        public void AddDebtorToStore()
         {
             _viewModel.CommandLoad.Execute(); // Read store into view model
-            Assert.AreEqual(_viewModel.Debtors.Count, 0);
-            _viewModel.Debtors.Add(new Debtor(1, "Joakim"));
-            Assert.AreEqual(_viewModel.Debtors.Count, 1);
-            Assert.AreEqual(_debtorStore.GetAll().Count, 1);
+            Assert.AreEqual(0, _viewModel.Debtors.Count);
+            int id = _viewModel.AddDebtor("Joakim");
+            Assert.AreEqual(1, _debtorStore.GetAll().Count);
+            Assert.AreEqual(1, _viewModel.Debtors.Count);
+            Debtor joakimDebtor = _viewModel.Debtors.First();
+            Assert.AreEqual(id, joakimDebtor.Id);
+            Assert.AreEqual("Joakim", joakimDebtor.Name);
+            Assert.AreEqual(0, joakimDebtor.TotalDebt);
+        }
+
+        [Test]
+        public void SetSelectedDebtor()
+        {
+            _viewModel.AddDebtor("Joakim");
+            Debtor joakimDebtor = _viewModel.Debtors.First();
+            Assert.AreEqual(null, _viewModel.SelectedDebtor);
+            _viewModel.SelectedDebtor = joakimDebtor;
+            Assert.AreEqual(joakimDebtor, _viewModel.SelectedDebtor);
         }
     }
 }
