@@ -10,8 +10,6 @@ namespace ex1_the_debt_book.Services
 
         public DbDebtorStore()
         {
-            int a = AddDebtor("Anders");
-            int b = AddDebtor("Kurt");
         }
 
         public List<Debtor> GetAll()

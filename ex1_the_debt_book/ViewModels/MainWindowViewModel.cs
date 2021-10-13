@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using ex1_the_debt_book.Models;
 using Prism.Commands;
@@ -35,11 +34,6 @@ namespace ex1_the_debt_book.ViewModels
             }
         }
 
-        private DelegateCommand _commandLoad = null;
-
-        public DelegateCommand CommandLoad =>
-            _commandLoad ?? (_commandLoad = new DelegateCommand(CommandLoadExecute));
-
         private void CommandLoadExecute()
         {
             Debtors.Clear();
@@ -47,5 +41,24 @@ namespace ex1_the_debt_book.ViewModels
             foreach (Debtor item in list)
                 Debtors.Add(item);
         }
+
+        private void CommandAddDebtorExecute()
+        {
+            // TODO: Open dialog
+        }
+
+        private void AddDebtor()
+        {
+            
+        }
+        
+        private DelegateCommand _commandLoad = null;
+        private DelegateCommand _commandAddDebtor = null;
+
+        public DelegateCommand CommandLoad =>
+            _commandLoad ?? (_commandLoad = new DelegateCommand(CommandLoadExecute));
+        
+        public DelegateCommand CommandAddDebtor =>
+            _commandAddDebtor ?? (_commandAddDebtor = new DelegateCommand(CommandAddDebtorExecute));
     }
 }
