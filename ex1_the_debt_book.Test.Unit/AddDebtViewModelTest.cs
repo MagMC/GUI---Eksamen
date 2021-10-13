@@ -8,18 +8,20 @@ namespace ex1_the_debt_book.Test.Unit
     {
         private IDebtorStore _debtorStore;
         private AddDebtViewModel _viewModel;
+        private int _debtorId;
 
         [SetUp]
         public void Setup()
         {
             _debtorStore = new DbDebtorStore();
-            int id = _debtorStore.AddDebtor("Chip");
-            _viewModel = new AddDebtViewModel(_debtorStore, id);
+            _debtorId = _debtorStore.AddDebtor("Chip");
+            _viewModel = new AddDebtViewModel(_debtorStore, _debtorId);
         }
 
         [Test]
-        public void LoadDataFromStore()
+        public void VerifyConstruction()
         {
+            Assert.AreEqual(_debtorId, _viewModel.Debtor.Id);
         }
     }
 }

@@ -8,18 +8,18 @@ namespace ex1_the_debt_book.ViewModels
     {
         private readonly Services.IDebtorStore _debtorStore;
         private readonly int _debtorId;
-        private Debtor _debtor;
+        public Debtor Debtor;
 
         public AddDebtViewModel(Services.IDebtorStore debtorStore, int debtorId)
         {
             _debtorStore = debtorStore;
             _debtorId = debtorId;
-            GetDebtor();
+            LoadDebtor();
         }
 
-        private void GetDebtor()
+        private void LoadDebtor()
         {
-            _debtor = _debtorStore.GetAll().Find(e => e.Id == _debtorId);
+            Debtor = _debtorStore.GetAll().Find(e => e.Id == _debtorId);
         }
     }
 }
