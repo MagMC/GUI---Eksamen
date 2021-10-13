@@ -23,14 +23,13 @@ namespace ex1_the_debt_book.Test.Unit
         {
             _debtorStore.AddDebtor("Anders And"); // Add debtor to store
             Assert.AreEqual(0, _viewModel.Debtors.Count);
-            _viewModel.CommandLoad.Execute(); // Read store into view model
+            _viewModel.LoadDebtors(); // Read store into view model
             Assert.AreEqual(1, _viewModel.Debtors.Count);
         }
 
         [Test]
         public void AddDebtorToStore()
         {
-            _viewModel.CommandLoad.Execute(); // Read store into view model
             Assert.AreEqual(0, _viewModel.Debtors.Count);
             int id = _viewModel.AddDebtor("Joakim");
             Assert.AreEqual(1, _debtorStore.GetAll().Count);

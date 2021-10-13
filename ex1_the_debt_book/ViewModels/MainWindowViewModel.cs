@@ -14,6 +14,7 @@ namespace ex1_the_debt_book.ViewModels
         public MainWindowViewModel(Services.IDebtorStore debtorStore)
         {
             _debtorStore = debtorStore;
+            LoadDebtors();
         }
 
 
@@ -34,7 +35,7 @@ namespace ex1_the_debt_book.ViewModels
             }
         }
 
-        private void CommandLoadExecute()
+        public void LoadDebtors()
         {
             Debtors.Clear();
             List<Debtor> list = _debtorStore.GetAll();
@@ -55,16 +56,12 @@ namespace ex1_the_debt_book.ViewModels
         public int AddDebtor(string name)
         {
             int id = _debtorStore.AddDebtor(name);
-            CommandLoadExecute();
+            LoadDebtors();
             return id;
         }
 
-        private DelegateCommand _commandLoad;
         private DelegateCommand _commandAddDebtor;
         private DelegateCommand _commandAddDebt;
-
-        public DelegateCommand CommandLoad =>
-            _commandLoad ?? (_commandLoad = new DelegateCommand(CommandLoadExecute));
 
         public DelegateCommand CommandAddDebtor =>
             _commandAddDebtor ?? (_commandAddDebtor = new DelegateCommand(CommandAddDebtorExecute));

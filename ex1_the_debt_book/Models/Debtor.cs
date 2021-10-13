@@ -5,9 +5,9 @@ namespace ex1_the_debt_book.Models
 {
     public class Debtor
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public List<Debt> Debts { get; private set; } = new List<Debt>();
+        public readonly int Id;
+        public readonly string Name;
+        public readonly List<Debt> Debts = new List<Debt>();
 
         public int TotalDebt
         {
