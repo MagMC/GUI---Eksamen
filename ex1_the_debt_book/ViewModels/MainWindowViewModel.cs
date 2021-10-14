@@ -19,9 +19,7 @@ namespace ex1_the_debt_book.ViewModels
             LoadDebtors();
         }
 
-
-        public ObservableCollection<Debtor> Debtors { get; } = new ObservableCollection<Debtor>();
-
+        public ObservableCollection<Debtor> Debtors { get; } = new();
 
         private Debtor _selectedDebtor;
 
@@ -47,7 +45,7 @@ namespace ex1_the_debt_book.ViewModels
 
         private void CommandAddDebtorExecute()
         {
-            Debtor newDebtor = new Debtor(1, "");
+            Debtor newDebtor = new Debtor();
             var vm = new DebtorViewModel(newDebtor);
 
             var dlg = new DebtorView
@@ -56,7 +54,7 @@ namespace ex1_the_debt_book.ViewModels
             };
             if (dlg.ShowDialog() == true)
             {
-                int id = AddDebtor(newDebtor.Name);
+                int id = AddDebtor(newDebtor);
                 SelectedDebtor = Debtors.FindFirst(e => e.Id == id);
             }
         }
@@ -66,9 +64,9 @@ namespace ex1_the_debt_book.ViewModels
             // TODO: Open dialog
         }
 
-        public int AddDebtor(string name)
+        public int AddDebtor(Debtor debtor)
         {
-            int id = _debtorStore.AddDebtor(name);
+            int id = _debtorStore.AddDebtor(debtor);
             LoadDebtors();
             return id;
         }

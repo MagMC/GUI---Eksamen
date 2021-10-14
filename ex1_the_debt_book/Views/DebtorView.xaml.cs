@@ -15,7 +15,6 @@ namespace ex1_the_debt_book.Views
         private void BtnAddPersonSave_OnClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-            
         }
 
         private void BtnAddPersonCancel_OnClick(object sender, RoutedEventArgs e)

@@ -6,15 +6,18 @@ namespace ex1_the_debt_book.Models
     public class Debtor
     {
         public readonly int Id;
-        public readonly string Name;
-        public readonly List<Debt> Debts = new List<Debt>();
+
+        public string Name { get; set; }
+        public int InitialDebt { get; set; }
+
+        public readonly List<Debt> Debts = new();
 
         public int TotalDebt
         {
-            get { return Debts.Sum(item => item.DebtAmount); }
+            get { return Debts.Sum(item => item.DebtAmount) + InitialDebt; }
         }
 
-        public Debtor(int id, string name)
+        public Debtor(int id = -1, string name = "")
         {
             Id = id;
             Name = name;

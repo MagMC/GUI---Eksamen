@@ -6,7 +6,7 @@ namespace ex1_the_debt_book.Services
     public interface IDebtorStore
     {
         List<Debtor> GetAll();
-        int AddDebtor(string name);
+        int AddDebtor(Debtor debtor);
 
         void AddDebtToDebtor(int debtorId, int counterpartId, int debtAmount);
     }

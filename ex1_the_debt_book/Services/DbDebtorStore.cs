@@ -5,21 +5,17 @@ namespace ex1_the_debt_book.Services
 {
     public class DbDebtorStore : IDebtorStore
     {
-        private List<Debtor> _debtors = new List<Debtor>();
+        private List<Debtor> _debtors = new();
         private int _debtorNextId;
-
-        public DbDebtorStore()
-        {
-        }
 
         public List<Debtor> GetAll()
         {
             return _debtors;
         }
 
-        public int AddDebtor(string name)
+        public int AddDebtor(Debtor debtor)
         {
-            Debtor newDebtor = new Debtor(_debtorNextId, name);
+            Debtor newDebtor = new Debtor(_debtorNextId) { InitialDebt = debtor.InitialDebt, Name = debtor.Name };
             _debtors.Add(newDebtor);
             return _debtorNextId++;
         }

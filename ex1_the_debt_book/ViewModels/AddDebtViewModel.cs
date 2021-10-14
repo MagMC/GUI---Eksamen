@@ -10,7 +10,7 @@ namespace ex1_the_debt_book.ViewModels
         private readonly Services.IDebtorStore _debtorStore;
         private readonly int _debtorId;
         public Debtor SelectedDebtor { get; private set; }
-        public ObservableCollection<Debtor> Debtors { get; } = new ObservableCollection<Debtor>();
+        public ObservableCollection<Debtor> Debtors { get; } = new();
 
         public AddDebtViewModel(Services.IDebtorStore debtorStore, int debtorId)
         {
