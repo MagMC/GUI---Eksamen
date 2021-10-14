@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\DepterView.xaml" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,7 +72,11 @@
     <Compile Include="Services\DbDebtorStore.cs" />
     <Compile Include="Services\IDebtorStore.cs" />
     <Compile Include="ViewModels\AddDebtViewModel.cs" />
+    <Compile Include="ViewModels\DepterViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\DepterView.xaml.cs">
+      <DependentUpon>DepterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
