@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using ex1_the_debt_book.Models;
 using ex1_the_debt_book.Views;
 using ImTools;
@@ -79,6 +83,29 @@ namespace ex1_the_debt_book.ViewModels
 
         public DelegateCommand CommandAddDebt =>
             _commandAddDebt ?? (_commandAddDebt = new DelegateCommand(CommandAddDebtExecute));
-        
+
+        private DelegateCommand<string> _colorCommand;
+        public DelegateCommand<string> ColorCommand =>
+            _colorCommand ??= new DelegateCommand<string>(ExecuteColorCommand);
+
+        void ExecuteColorCommand(string colorStr)
+        {
+            SolidColorBrush newBrush = SystemColors.WindowBrush; // Default color
+
+            try
+            {
+                if (colorStr != null)
+                {
+                    if (colorStr != "Default")
+                        newBrush = new SolidColorBrush((Color) ColorConverter.ConvertFromString(colorStr));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unknown color name, default color is used", "Program error!");
+            }
+
+            Application.Current.Resources["BackgroundBrush"] = newBrush;
+        }
     }
 }

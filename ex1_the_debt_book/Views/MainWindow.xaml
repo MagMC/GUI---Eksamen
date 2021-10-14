@@ -7,7 +7,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -19,16 +20,21 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="File">
-                    <MenuItem Header="Color" Command="{Binding ColorCommand}"></MenuItem>
+                    <MenuItem Header="Color" Command="{Binding ColorCommand}">
+                        <MenuItem Header="Default" Command="{Binding ColorCommand}" CommandParameter="Default" />
+                        <MenuItem Header="Green" Command="{Binding ColorCommand}" CommandParameter="Green" />
+                        <MenuItem Header="Blue" Command="{Binding ColorCommand}" CommandParameter="Blue" />
+                    </MenuItem>
                 </MenuItem>
             </Menu>
         </DockPanel>
         
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="ContentRegion" />
+        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="ContentRegion" />
 
-        <TextBox Text="The Debt Book" FontSize="30" FontStyle="Italic" />
+        <TextBox Grid.Row="1" Text="The Debt Book" FontSize="30" FontStyle="Italic" />
+        
         <ListView
-            Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Debtors}"
+            Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Debtors}"
             SelectedItem="{Binding SelectedDebtor}">
             <ListView.View>
                 <GridView>
@@ -38,7 +44,7 @@
             </ListView.View>
         </ListView>
         <Button
-            Grid.Row="1" Grid.Column="1" Width="80" Height="40" Margin="20"
+            Grid.Row="2" Grid.Column="1" Width="80" Height="40" Margin="20"
             Command="{Binding CommandAddDebtor}"
             Content="Add" />
     </Grid>
