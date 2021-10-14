@@ -10,7 +10,7 @@
         
         <Style TargetType="Button">
             <Style.Setters>
-                <Setter Property="Foreground" Value="Wheat"/>
+                <Setter Property="Foreground" Value="Black"/>
                 <Setter Property="Background" Value="Brown" />
             </Style.Setters>
         </Style>
