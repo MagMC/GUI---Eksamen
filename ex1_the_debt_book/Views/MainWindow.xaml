@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        Background="{DynamicResource BackgroundBrush}"
         Title="{Binding Title}" Height="350" Width="525">
-
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -17,23 +18,11 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="File">
-                    <MenuItem Header="Color" Command="{Binding ColorCommand}">
-                        <MenuItem Header="Default" Command="{Binding ColorCommand}" CommandParameter="Default" />
-                        <MenuItem Header="Green" Command="{Binding ColorCommand}" CommandParameter="Green" />
-                        <MenuItem Header="Blue" Command="{Binding ColorCommand}" CommandParameter="Blue" />
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
-        
         <ContentControl Grid.Column="0" prism:RegionManager.RegionName="ContentRegion" />
 
-        <TextBox Grid.Row="1" Text="The Debt Book" FontSize="30" FontStyle="Italic" />
+        <TextBox Grid.Row="1" Grid.Column="0" Text="The Debt Book" FontSize="30" FontStyle="Italic" />
         
-        <ListView
+        <ListView Margin="10"
             Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Debtors}"
             SelectedItem="{Binding SelectedDebtor}">
             <ListView.View>
@@ -47,6 +36,20 @@
             Grid.Row="2" Grid.Column="1" Width="80" Height="40" Margin="20"
             Command="{Binding CommandAddDebtor}"
             Content="Add" />
+        
+        <DockPanel Grid.Row="0" Grid.Column="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="_Color">
+                        <MenuItem Header="_Default" Command="{Binding ColorCommand}" CommandParameter="Default" />
+                        <MenuItem Header="_Bisque" Command="{Binding ColorCommand}" CommandParameter="Bisque" />
+                        <MenuItem Header="Light_Green" Command="{Binding ColorCommand}" CommandParameter="LightGreen"/>
+                        <MenuItem Header="_LightBlue" Command="{Binding ColorCommand}" CommandParameter="LightBlue"/>
+                        <MenuItem Header="DarkViolet" Command="{Binding ColorCommand}" CommandParameter="DarkViolet"/>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        
     </Grid>
-
 </Window>

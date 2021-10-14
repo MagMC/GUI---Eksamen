@@ -79,10 +79,10 @@ namespace ex1_the_debt_book.ViewModels
         private DelegateCommand _commandAddDebt;
 
         public DelegateCommand CommandAddDebtor =>
-            _commandAddDebtor ?? (_commandAddDebtor = new DelegateCommand(CommandAddDebtorExecute));
+            _commandAddDebtor ??= (_commandAddDebtor = new DelegateCommand(CommandAddDebtorExecute));
 
         public DelegateCommand CommandAddDebt =>
-            _commandAddDebt ?? (_commandAddDebt = new DelegateCommand(CommandAddDebtExecute));
+            _commandAddDebt ??= (_commandAddDebt = new DelegateCommand(CommandAddDebtExecute));
 
         private DelegateCommand<string> _colorCommand;
         public DelegateCommand<string> ColorCommand =>
@@ -97,7 +97,7 @@ namespace ex1_the_debt_book.ViewModels
                 if (colorStr != null)
                 {
                     if (colorStr != "Default")
-                        newBrush = new SolidColorBrush((Color) ColorConverter.ConvertFromString(colorStr));
+                        newBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorStr));
                 }
             }
             catch (Exception)
@@ -107,5 +107,6 @@ namespace ex1_the_debt_book.ViewModels
 
             Application.Current.Resources["BackgroundBrush"] = newBrush;
         }
+
     }
 }
