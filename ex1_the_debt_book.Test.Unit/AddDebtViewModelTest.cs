@@ -18,8 +18,8 @@ namespace ex1_the_debt_book.Test.Unit
         public void Setup()
         {
             _debtorStore = new DbDebtorStore();
-            _debtorId = _debtorStore.AddDebtor("Chip");
-            _creditorId = _debtorStore.AddDebtor("Joakim");
+            _debtorId = _debtorStore.AddDebtor(new Debtor(-1, "Chip"));
+            _creditorId = _debtorStore.AddDebtor(new Debtor(-1, "Joakim"));
             _viewModel = new AddDebtViewModel(_debtorStore, _debtorId);
         }
 

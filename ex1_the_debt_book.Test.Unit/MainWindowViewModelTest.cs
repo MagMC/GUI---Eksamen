@@ -21,7 +21,7 @@ namespace ex1_the_debt_book.Test.Unit
         [Test]
         public void LoadDataFromStore()
         {
-            _debtorStore.AddDebtor("Anders And"); // Add debtor to store
+            _debtorStore.AddDebtor(new Debtor(-1, "Anders And")); // Add debtor to store
             Assert.AreEqual(0, _viewModel.Debtors.Count);
             _viewModel.LoadDebtors(); // Read store into view model
             Assert.AreEqual(1, _viewModel.Debtors.Count);
@@ -31,7 +31,7 @@ namespace ex1_the_debt_book.Test.Unit
         public void AddDebtorToStore()
         {
             Assert.AreEqual(0, _viewModel.Debtors.Count);
-            int id = _viewModel.AddDebtor("Joakim");
+            int id = _viewModel.AddDebtor(new Debtor(-1, "Joakim"));
             Assert.AreEqual(1, _debtorStore.GetAll().Count);
             Assert.AreEqual(1, _viewModel.Debtors.Count);
             Debtor joakimDebtor = _viewModel.Debtors.First();
@@ -43,7 +43,7 @@ namespace ex1_the_debt_book.Test.Unit
         [Test]
         public void SetSelectedDebtor()
         {
-            _viewModel.AddDebtor("Joakim");
+            _viewModel.AddDebtor(new Debtor(-1, "Joakim"));
             Debtor joakimDebtor = _viewModel.Debtors.First();
             Assert.AreEqual(null, _viewModel.SelectedDebtor);
             _viewModel.SelectedDebtor = joakimDebtor;
