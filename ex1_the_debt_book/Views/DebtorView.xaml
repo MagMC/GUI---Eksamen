@@ -1,0 +1,27 @@
+﻿<Window x:Class="ex1_the_debt_book.Views.DebtorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="AddPerson" Height="350" Width="525" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Add debtor" FontSize="16" HorizontalAlignment="Center"></Label>
+        <TextBox Name="TxbAddName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Text="{Binding Path=Name}" />
+        <TextBox Name="TxbAddValue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Text="{Binding Path= TotalDebt}"></TextBox>
+        <Button Name="BtnAddPersonSave" Grid.Row="3" Grid.Column="0" Content="Save" Margin="5" Width="50" Click="BtnAddPersonSave_OnClick" IsDefault="True"/>
+        <Button Name="BtnAddPersonCancel" Grid.Row="3" Grid.Column="1" Content="Cancel" Margin="5" Width="50" Click="BtnAddPersonCancel_OnClick" IsCancel="True"/>
+    </Grid>
+</Window>

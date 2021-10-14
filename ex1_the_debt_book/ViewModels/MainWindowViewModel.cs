@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using ex1_the_debt_book.Models;
+using ex1_the_debt_book.Views;
+using ImTools;
 using Prism.Commands;
 using Prism.Mvvm;
 
@@ -45,7 +47,18 @@ namespace ex1_the_debt_book.ViewModels
 
         private void CommandAddDebtorExecute()
         {
-            // TODO: Open dialog
+            Debtor newDebtor = new Debtor(1, "");
+            var vm = new DebtorViewModel(newDebtor);
+
+            var dlg = new DebtorView
+            {
+                DataContext = vm
+            };
+            if (dlg.ShowDialog() == true)
+            {
+                int id = AddDebtor(newDebtor.Name);
+                SelectedDebtor = Debtors.FindFirst(e => e.Id == id);
+            }
         }
 
         private void CommandAddDebtExecute()
