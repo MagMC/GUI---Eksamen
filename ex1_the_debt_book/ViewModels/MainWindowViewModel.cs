@@ -79,5 +79,6 @@ namespace ex1_the_debt_book.ViewModels
 
         public DelegateCommand CommandAddDebt =>
             _commandAddDebt ?? (_commandAddDebt = new DelegateCommand(CommandAddDebtExecute));
+        
     }
 }

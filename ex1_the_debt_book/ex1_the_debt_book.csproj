@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\DebtorView.xaml" />
+    <Page Include="Views\DebtView.xaml" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,6 +78,9 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\DebtorView.xaml.cs">
       <DependentUpon>DebtorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DebtView.xaml.cs">
+      <DependentUpon>DebtView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

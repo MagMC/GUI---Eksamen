@@ -15,6 +15,15 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Color" Command="{Binding ColorCommand}"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        
         <ContentControl Grid.Column="1" prism:RegionManager.RegionName="ContentRegion" />
 
         <TextBox Text="The Debt Book" FontSize="30" FontStyle="Italic" />
