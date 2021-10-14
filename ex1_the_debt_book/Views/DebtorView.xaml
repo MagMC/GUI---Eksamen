@@ -13,12 +13,13 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="0" Content="Add debtor:" FontSize="16" HorizontalAlignment="Center"></Label>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Add debtor:" FontSize="16" HorizontalAlignment="Center"></Label>
         <TextBox Name="TxbAddName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Text="{Binding Path=Debtor.Name}" />
         <TextBox Name="TxbAddValue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Text="{Binding Path= Debtor.InitialDebt}"></TextBox>
-        <Button Name="BtnAddPersonSave" Grid.Row="3" Grid.Column="0" Content="Save" HorizontalAlignment="Left" Margin="5" Width="50" Click="BtnAddPersonSave_OnClick" IsDefault="True"/>
-        <Button Name="BtnAddPersonCancel" Grid.Row="3" Grid.Column="1" Content="Cancel" HorizontalAlignment="Right" Margin="5" Width="50" Click="BtnAddPersonCancel_OnClick" IsCancel="True"/>
+        <Button Name="BtnAddPersonSave" Grid.Row="3" Grid.Column="0" Content="Save" Margin="5" Width="50" Click="BtnAddPersonSave_OnClick" IsDefault="True"/>
+        <Button Name="BtnAddPersonCancel" Grid.Row="3" Grid.Column="1" Content="Cancel" Margin="5" Width="50" Click="BtnAddPersonCancel_OnClick" IsCancel="True"/>
     </Grid>
 </Window>
