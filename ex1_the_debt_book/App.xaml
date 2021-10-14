@@ -22,15 +22,6 @@
             </Style.Setters>
         </Style>
 
-        <Style x:Key="JamesStyle" TargetType="{x:Type TextBox}"
-               BasedOn="{StaticResource TextBoxStyle}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=CurrentAgent.ID}" Value="007">
-                    <Setter Property="Foreground" Value="Red"></Setter>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-
         <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="12pt" />
             <Setter Property="FontFamily" Value="Consolas" />
