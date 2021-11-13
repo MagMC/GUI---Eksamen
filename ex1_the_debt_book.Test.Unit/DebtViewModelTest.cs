@@ -7,10 +7,10 @@ using NUnit.Framework;
 
 namespace ex1_the_debt_book.Test.Unit
 {
-    public class AddDebtViewModelTest
+    public class DebtViewModelTest
     {
         private IDebtorStore _debtorStore;
-        private AddDebtViewModel _viewModel;
+        private DebtViewModel _viewModel;
         private int _debtorId;
         private int _creditorId;
 
@@ -20,7 +20,7 @@ namespace ex1_the_debt_book.Test.Unit
             _debtorStore = new DbDebtorStore();
             _debtorId = _debtorStore.AddDebtor(new Debtor(-1, "Chip"));
             _creditorId = _debtorStore.AddDebtor(new Debtor(-1, "Joakim"));
-            _viewModel = new AddDebtViewModel(_debtorStore, _debtorId);
+            _viewModel = new DebtViewModel(_debtorStore, _debtorId);
         }
 
         [Test]

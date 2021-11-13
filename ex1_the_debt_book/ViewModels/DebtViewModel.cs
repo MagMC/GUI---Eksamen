@@ -5,14 +5,14 @@ using Prism.Mvvm;
 
 namespace ex1_the_debt_book.ViewModels
 {
-    public class AddDebtViewModel : BindableBase
+    public class DebtViewModel : BindableBase
     {
         private readonly Services.IDebtorStore _debtorStore;
         private readonly int _debtorId;
         public Debtor SelectedDebtor { get; private set; }
         public ObservableCollection<Debtor> Debtors { get; } = new();
 
-        public AddDebtViewModel(Services.IDebtorStore debtorStore, int debtorId)
+        public DebtViewModel(Services.IDebtorStore debtorStore, int debtorId)
         {
             _debtorStore = debtorStore;
             _debtorId = debtorId;
