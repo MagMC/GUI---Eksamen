@@ -11,5 +11,10 @@ namespace ex1_the_debt_book.Views
         {
             InitializeComponent();
         }
+
+        private void Exit_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
