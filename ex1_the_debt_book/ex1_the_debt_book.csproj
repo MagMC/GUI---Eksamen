@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Models\Debt.cs" />
     <Compile Include="Models\Debtor.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\DbDebtorStore.cs" />
     <Compile Include="Services\IDebtorStore.cs" />
     <Compile Include="ViewModels\DebtViewModel.cs" />

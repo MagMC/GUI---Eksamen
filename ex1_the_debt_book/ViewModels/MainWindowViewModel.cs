@@ -93,15 +93,17 @@ namespace ex1_the_debt_book.ViewModels
 
         private void CommandOpenDebtExecute()
         {
-            // TODO: Open dialog
+            if (_selectedDebtor == null)
+            {
+                return;
+            }
             var vm = new DebtViewModel(_debtorStore, _selectedDebtor.Id);
             var dlg = new DebtView
             {
                 DataContext = vm
             };
-            if (dlg.ShowDialog() == true)
-            {
-            }
+            dlg.ShowDialog();
+            LoadDebtors();
         }
 
         private void CommandColorExecute(string colorStr)

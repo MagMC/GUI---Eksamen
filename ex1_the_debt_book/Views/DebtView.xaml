@@ -3,47 +3,68 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:ex1_the_debt_book.Views"
         mc:Ignorable="d"
-        Title="DebtView" Height="450" Width="650">
+        Title="Debts" Height="450" Width="650">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="80"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         
-        <Label Grid.Row="0" Grid.Column="0" Content="Dept for:" FontSize="16"></Label>
-        <Label Name="LDeptName" Grid.Row="0" Grid.Column="1" Content="{Binding CurrentDebtor.Name}" FontSize="16"></Label>
-        <Label Grid.Row="3" Grid.Column="2" Content="Total Amount:"></Label>
-        <Label Name="LTotalAmount" Grid.Row="3" Grid.Column="3" Content="{Binding CurrentDebtor.TotalDebt}" ></Label>
+        <Label Grid.Row="0" Grid.Column="0" Content="Debt for:" FontSize="16"></Label>
+        <Label Name="LDeptName" Grid.Row="0" Grid.Column="1" Content="{Binding SelectedDebtor.Name}" FontSize="16"></Label>
         
-        <Button Name="BtnClose" Content="Close" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Command="{Binding CloseWindowCommand}"></Button>
-        <Button Name="BtnAddTransaction" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="Add Transaction" Height="20" VerticalAlignment="Top" Margin="5"
-                Command="{Binding AddTransCommand}"></Button>
+        <Grid Grid.Row="3" Grid.Column="2" Width="120">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Label Content="Initial debt:"></Label>
+            <Label Grid.Column="1" Content="{Binding SelectedDebtor.InitialDebt}" ></Label>
+            <Label Grid.Row="1" Content="Total debt:"></Label>
+            <Label Grid.Row="1" Grid.Column="1" Content="{Binding SelectedDebtor.TotalDebt}" ></Label>
+        </Grid>
         
-        <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Height="20" VerticalAlignment="top" Margin="5" Text="{Binding Value}"></TextBox>
-
-      
-        <ListView Name="LibPersonDebt" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5" Height="200" Width="300"
-                  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding CurrentDebtor.TransactionList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding}"></TextBlock>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+        <Grid Grid.Row="1" Grid.Column="2" Width="200" Height="100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Label Content="Counterpart:"></Label>
+            <ComboBox Grid.Row="0" Grid.Column="1" Height="20" VerticalAlignment="top" Margin="5" ItemsSource="{Binding CounterpartDebtors}" SelectedItem="{Binding NewCounterpart}"></ComboBox>
+            <Label Grid.Row="1" Content="Debt amount:"></Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Height="20" VerticalAlignment="top" Margin="5" Text="{Binding NewDebtAmount}"></TextBox>
+            
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Add Transaction" Height="20" VerticalAlignment="Top" Margin="5"
+                    Command="{Binding CommandAddTransaction}"></Button>
+        </Grid>
+        
+        <ListView Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5" Height="200" Width="300" ItemsSource="{Binding SelectedDebtor.Debts}"
+                  SelectedItem="{Binding SelectedDebt}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Counterpart" Width="120" DisplayMemberBinding="{Binding CounterpartName}"/>
+                    <GridViewColumn Header="Amount" Width="120" DisplayMemberBinding="{Binding DebtAmount}" />
+                </GridView>
+            </ListView.View>
         </ListView>
 
     </Grid>

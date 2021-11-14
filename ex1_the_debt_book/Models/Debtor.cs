@@ -1,16 +1,16 @@
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using ImTools;
 
 namespace ex1_the_debt_book.Models
 {
     public class Debtor
     {
         public readonly int Id;
-
         public string Name { get; set; }
         public int InitialDebt { get; set; }
 
-        public readonly List<Debt> Debts = new();
+        public ObservableCollection<Debt> Debts { get; } = new();
 
         public int TotalDebt
         {
@@ -25,7 +25,7 @@ namespace ex1_the_debt_book.Models
 
         public void AddDebt(int counterpartId, int debtAmount)
         {
-            Debt debtEntry = Debts.Find(item => item.CounterpartId == counterpartId);
+            Debt debtEntry = Debts.FindFirst(item => item.CounterpartId == counterpartId);
             if (debtEntry == null)
             {
                 Debts.Add(new Debt(counterpartId, debtAmount));
@@ -38,6 +38,11 @@ namespace ex1_the_debt_book.Models
                     Debts.Remove(debtEntry);
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }
