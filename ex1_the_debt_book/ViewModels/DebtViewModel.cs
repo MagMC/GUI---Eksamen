@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using ex1_the_debt_book.Models;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -83,9 +84,17 @@ namespace ex1_the_debt_book.ViewModels
 
         private void CommandAddTransactionExecute()
         {
-            AddDebt(NewCounterpart.Id, NewDebtAmount);
-            NewCounterpart = null;
-            NewDebtAmount = 0;
+            if (NewCounterpart != null)
+            {
+                AddDebt(NewCounterpart.Id, NewDebtAmount);
+                NewCounterpart = null;
+                NewDebtAmount = 0;
+            }
+            else
+            {
+                MessageBox.Show("You need a counterpart!");
+            }
+
         }
     }
 }
