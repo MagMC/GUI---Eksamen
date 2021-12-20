@@ -1,9 +1,9 @@
-﻿using ex1_the_debt_book.Views;
-using Prism.Ioc;
+﻿using Prism.Ioc;
 using System.Windows;
+using Eksamensdel1.Views;
 using Prism.DryIoc;
 
-namespace ex1_the_debt_book
+namespace Eksamensdel1
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -17,7 +17,6 @@ namespace ex1_the_debt_book
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<Services.IDebtorStore, Services.DbDebtorStore>();
         }
     }
 }

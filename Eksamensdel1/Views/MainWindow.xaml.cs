@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using ex1_the_debt_book.ViewModels;
+using Eksamensdel1.ViewModels;
 
-namespace ex1_the_debt_book.Views
+namespace Eksamensdel1.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,10 +19,10 @@ namespace ex1_the_debt_book.Views
             Close();
         }
 
-        private void DebtorList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Credits_OnClick(object sender, RoutedEventArgs e)
         {
-            var vm = DataContext as MainWindowViewModel;
-            vm.CommandOpenDebt.Execute();
+            var cm = new CreditsWindow();
+            cm.Show();
         }
     }
 }

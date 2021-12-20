@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ex1_the_debt_book.Properties
+namespace Eksamensdel1.Properties
 {
 
 

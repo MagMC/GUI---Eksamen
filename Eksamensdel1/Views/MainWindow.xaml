@@ -1,0 +1,35 @@
+﻿<Window x:Class="Eksamensdel1.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Background="{DynamicResource BackgroundBrush}"
+        Title="MainWindow" Height="350" Width="525">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="_Color">
+                        <MenuItem Header="_Default" Command="{Binding CommandColor}" CommandParameter="Default" />
+                        <MenuItem Header="_Bisque" Command="{Binding CommandColor}" CommandParameter="Bisque" />
+                        <MenuItem Header="Light_Green" Command="{Binding CommandColor}" CommandParameter="LightGreen" />
+                        <MenuItem Header="_LightBlue" Command="{Binding CommandColor}" CommandParameter="LightBlue" />
+                        <MenuItem Header="DarkViolet" Command="{Binding CommandColor}" CommandParameter="DarkViolet" />
+                    </MenuItem>
+                    <MenuItem Header="Exit" Click="Exit_OnClick" />
+                    <MenuItem Header="Credits" Click="Credits_OnClick"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <Grid Grid.Row="1">
+            
+        </Grid>
+    </Grid>
+</Window>

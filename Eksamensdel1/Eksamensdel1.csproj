@@ -7,8 +7,8 @@
     <ProjectGuid>{C9F42034-45B6-457B-8860-036A96698CEA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ex1_the_debt_book</RootNamespace>
-    <AssemblyName>ex1_the_debt_book</AssemblyName>
+    <RootNamespace>Eksamensdel1</RootNamespace>
+    <AssemblyName>Eksamensdel1</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -59,8 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\DebtorView.xaml" />
-    <Page Include="Views\DebtView.xaml" />
+    <Page Include="Views\CreditsWindow.xaml" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,19 +68,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Debt.cs" />
-    <Compile Include="Models\Debtor.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Services\DbDebtorStore.cs" />
-    <Compile Include="Services\IDebtorStore.cs" />
-    <Compile Include="ViewModels\DebtViewModel.cs" />
-    <Compile Include="ViewModels\DebtorViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\DebtorView.xaml.cs">
-      <DependentUpon>DebtorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DebtView.xaml.cs">
-      <DependentUpon>DebtView.xaml</DependentUpon>
+    <Compile Include="Views\CreditsWindow.xaml.cs">
+      <DependentUpon>CreditsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -120,6 +110,11 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models" />
+    <Folder Include="Services" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
