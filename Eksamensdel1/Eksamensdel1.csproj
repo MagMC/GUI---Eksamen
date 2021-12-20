@@ -117,5 +117,9 @@
     <Folder Include="Services" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Resource Include="Images\julenisse.jpg" />
+  </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

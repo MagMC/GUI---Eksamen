@@ -6,7 +6,40 @@
         xmlns:local="clr-namespace:Eksamensdel1.Views"
         mc:Ignorable="d"
         Title="CreditsWindow" Height="350" Width="525">
-    <Grid>
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
-    </Grid>
+        <Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">Glædelig Jul og godt nytår!</Label>
+        <Label Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">Mvh. Magnus Mølgaard Christensen</Label>
+        
+        <!--Buttons-->
+        <Button Grid.Row="3" Grid.Column="1" Height="20" Width="80" Content="Back" Click="Back_OnClick"></Button>
+        
+        <!--Shapes-->
+        <DockPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5">
+            <Ellipse Height="160" Width="105" Fill="Green"></Ellipse>
+            <Ellipse Height="160" Width="105" Fill="Green"></Ellipse>
+            <Ellipse Height="160" Width="105" Fill="Green"></Ellipse>
+            <Ellipse Height="160" Width="105" Fill="Green"></Ellipse>
+            <Ellipse Height="160" Width="105" Fill="Green"></Ellipse>
+        </DockPanel>
+        
+        <!--Images-->
+        <Image Grid.Row="0" Grid.Column="4" Height="100"  Source="/Images/julenisse.jpg"> </Image>
+     </Grid>
+
 </Window>

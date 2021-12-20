@@ -8,5 +8,10 @@ namespace Eksamensdel1.Views
         {
             InitializeComponent();
         }
+
+        private void Back_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

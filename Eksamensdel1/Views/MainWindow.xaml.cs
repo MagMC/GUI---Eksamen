@@ -22,7 +22,7 @@ namespace Eksamensdel1.Views
         private void Credits_OnClick(object sender, RoutedEventArgs e)
         {
             var cm = new CreditsWindow();
-            cm.Show();
+            cm.ShowDialog();
         }
     }
 }
