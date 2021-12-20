@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
         
         <Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">Glædelig Jul og godt nytår!</Label>
